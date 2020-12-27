@@ -1,0 +1,57 @@
+---
+permalink: /404.html
+---
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <style type="text/css">
+    body {
+      background: #eee;
+    }
+  </style>
+  <title>Zhao.UV - 404</title>
+</head>
+
+<body>
+  <script>
+    var redirect = {
+      s: 'http://zhaouv.net/',
+    }
+    var host = window.location.host
+    if (window.location.origin === 'file://') {
+      host = 'file://'
+    }
+    var href = window.location.href
+    href = href.split(host).slice(1).join(host)
+    var path = decodeURI(window.location.pathname.split('/')[1])
+    var postfix = href.split('/').slice(2).join('/')
+    if (redirect[path]) {
+      var gotourl = redirect[path] + postfix
+      window.location = gotourl
+    }
+  </script>
+  <canvas id="grass" style="position:fixed;z-index:-1;top:0;left:0;width:100%;height:100%"></canvas>
+  <script>
+    // Modified from http://js1k.com/2013-spring/demo/1547
+    var c = document.getElementById("grass");
+    var b = document.body;
+    var a = c.getContext('2d');
+    //a.font="bold 200pt Arial";
+    var devicePixelRatio = window.devicePixelRatio || 1;
+    var backingStoreRatio = a.webkitBackingStorePixelRatio ||
+      a.mozBackingStorePixelRatio ||
+      a.msBackingStorePixelRatio ||
+      a.oBackingStorePixelRatio ||
+      a.backingStorePixelRatio || 1;
+    var ratio = devicePixelRatio / backingStoreRatio;
+    c.style.width = (c.width = innerWidth) + 'px';
+    c.style.height = (c.height = innerHeight) + 'px';
+    //c.width = c.width * ratio;
+    //c.height = c.height * ratio;
+    a.font = Math.floor(c.width / 5.3) + "pt Verdana,微软雅黑"; a.fillStyle = "#eee"; a.fillText("404", Math.floor(c.width * (0.5 - 1.35 / 5.3)), Math.floor(c.width / 5.3 * 1.7)); var e = [], f = a.getImageData(0, 0, c.width, c.height); a.clearRect(0, 0, c.width, c.height); for (x = 0; x < f.width; x++)for (y = 0; y < f.height; y++) { var h = f; 0 < h.data[4 * (x + y * h.width) + 3] && e.push([x, y]) } setInterval(j, 10); var k = 40, l = []; function m() { this.f = function () { var d = e[p][1]; this.x = e[p][0]; this.y = d; this.width = 15; this.b = 2 * Math.random() * Math.PI - Math.PI; this.length = this.a = 0 }; this.e = function () { this.length < k && (this.x += 1 * Math.cos(this.b), this.y += 1 * Math.sin(this.b), this.a += 0.02 * Math.random() - 0.01, this.a *= 1, this.b += this.a, void 0 != this.c && (aa = this.length / k, r = 8, g = parseInt(255 * aa), b = 32, a.beginPath(), a.strokeStyle = "rgba(" + r + "," + g + "," + b + "," + (1 - aa) + ")", a.moveTo(this.c, this.d), a.lineTo(this.x, this.y), a.closePath(), a.stroke()), this.c = this.x, this.d = this.y, this.length++) } } function j() { for (p in e) if (0.9999 < Math.random()) { var d = new m; d.f(); l.push(d) } if (0 < l.length) for (d in l) l[d].e() };
+  </script>
+</body>
+
+</html>
